@@ -30,6 +30,11 @@
   
   .navbar-side #svgLogo{
     fill: rgba(97, 218, 251, 1);/*#01d277;*/
+    transition: transform .5s ease;
+  }
+
+  .navbar-side #svgLogo:hover{
+    scale: 1.5;
   }
   
   .nav-links{
@@ -121,6 +126,10 @@
     fill: rgba(97, 218, 251, 1); /*#01d277;*/
   }
 
+
+  .active-link .nav-link-wrap .nav-icon {
+    fill: aqua;
+  }
 
   @media (min-width: 768px){
     .navbar{
