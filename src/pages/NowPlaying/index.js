@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 
+import MoviesPage from '../../components/MoviesPage'
+
+
 class NowPlaying extends Component{
     render(){
         return(
-            <h1>Now Playing</h1>
+           <div>
+              <MoviesPage title='Em Cartaz' category='now_playing'  showAll={ true }/>
+           </div>
         )
     }
 }

@@ -28,6 +28,11 @@ class  Movies extends Component {
         })
     }
 
+    movies = () => {
+        console.log(this.props.showAll)
+        return this.props.showAll ? this.props.movies[this.props.category].results : this.props.movies[this.props.category].results.slice(0, 10)
+    }
+
     render(){   
         
         return(
@@ -39,7 +44,7 @@ class  Movies extends Component {
                 </header>
                 {this.props.movies[this.props.category] && <ul className='movies-list'>
                    {  
-                    this.props.movies[this.props.category].results.slice(0, 5).map(movie => 
+                    this.movies().map(movie => 
                         <li className='movie-item' key={ movie.id }>
                             <Movie movie={ movie } url={ this.props.url }/>
                         </li>
@@ -59,5 +64,4 @@ const mapStateToProps = state => ({
     movies: state.movies
 })
 
-// export default Movies
 export default  connect(mapStateToProps)(Movies)
