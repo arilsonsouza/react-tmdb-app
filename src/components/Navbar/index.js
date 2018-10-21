@@ -14,8 +14,7 @@ class Navbar extends Component {
 
     handleSubmit = (event) => {
         if(event.key === 'Enter'){
-            // return <Redirect to={`/pesquisar/${this.state.query.replace(' ', '+')}`}/>
-            this.props.history.push(`/pesquisar/${this.state.query.replace(' ', '+')}`)
+            this.props.history.push(`/filmes/pesquisar/${this.state.query.trim().replace(/ /g, '-')}`)
         }
     }
 
@@ -55,7 +54,7 @@ class Navbar extends Component {
                     <div className='nav-main-links'>
                         <ul className='nav-links'>
                         <li className='nav-item'>
-                            <NavLink to='/populares' className='nav-link' activeClassName="active-link">
+                            <NavLink to='/filmes/populares' className='nav-link' activeClassName="active-link">
                             <div className='nav-link-wrap'>
                                 <svg id='icon_popular' className='nav-icon' viewBox='0 0 30 30' width='100%' height='100%'>
                                 <title>Populares</title>
@@ -69,7 +68,7 @@ class Navbar extends Component {
                         </li>
 
                         <li className='nav-item'>
-                            <NavLink to='/mais-votados' className='nav-link' activeClassName="active-link">
+                            <NavLink to='/filmes/mais-votados' className='nav-link' activeClassName="active-link">
                             <div className='nav-link-wrap'>
                                 <svg id='icon_top_rated' className='nav-icon' viewBox='0 0 30 30' width='100%' height='100%'>
                                     <title>+Votados</title>
@@ -81,7 +80,7 @@ class Navbar extends Component {
                         </li>
 
                         <li className='nav-item'>
-                            <NavLink to='/lancamentos' className='nav-link' activeClassName="active-link">
+                            <NavLink to='/filmes/lancamentos' className='nav-link' activeClassName="active-link">
                             <div className='nav-link-wrap'>
                                 <svg id='icon_upcoming' className='nav-icon' viewBox='0 0 30 23' width='100%' height='100%'>
                                     <title>Lançamentos</title>
@@ -93,7 +92,7 @@ class Navbar extends Component {
                         </li>
 
                         <li className='nav-item'>
-                            <NavLink to='/em-cartaz' className='nav-link' activeClassName="active-link">
+                            <NavLink to='/filmes/em-cartaz' className='nav-link' activeClassName="active-link">
                             <div className='nav-link-wrap'>
                                 <svg id='icon_now_playing' className='nav-icon' viewBox='0 0 30 30' width='100%' height='100%'>
                                     <title>Em cartaz</title>
@@ -109,7 +108,7 @@ class Navbar extends Component {
                     </div>
                     </div>
                 </nav>
-                <header>
+                <header className='header'>
                     <div className='header-search'>
                             <svg id='iconSearch' viewBox='0 0 30 30' width='100%' height='100%'>
                             <title>Pesquisar</title>

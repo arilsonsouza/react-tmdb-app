@@ -12,7 +12,7 @@ class Search extends Component{
 
     setQuery = (searchTerm) => {
         this.setState({
-            query: searchTerm
+            query: searchTerm.replace(/\-/g, ' ')
         })
     }
 

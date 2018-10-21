@@ -1,0 +1,32 @@
+.movie-item-link{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-decoration: none;
+    color: rgba(8, 28, 36, .5);
+}
+
+.movie-item-img{
+    width: 100%;
+    transform: scale(.97) translateZ(0);
+    transition: opacity .5s ease,transform .5s ease; 
+}
+
+.movie-item-img:hover{
+    transform: scale(1);
+}
+
+.movie-item-poster:hover ~ .movie-item-content > .movie-item-title {
+    color: #081c24;
+}
+
+.movie-item-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-item-title{
+    letter-spacing: .5px;
+    transition: color .5s ease;
+}

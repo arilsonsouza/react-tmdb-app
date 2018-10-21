@@ -80,7 +80,7 @@
     fill: rgba(97, 218, 251, 1); /*#01d277;*/
   }
   
-  header{
+  .header{
     position: fixed;
     z-index: 15;
     display: flex;
@@ -138,7 +138,7 @@
       height: 100vh;
     }
   
-    header{
+    .header{
       width: calc(100% - 95px);
       margin-left: 95px;
       border-top: 0;
@@ -186,7 +186,7 @@
     }
 
 
-    header{
+    .header{
         width: calc(100% - 85px);
         margin-left: 85px;
       }

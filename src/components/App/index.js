@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import './App.css';
 import Navbar from '../Navbar'
@@ -9,6 +10,7 @@ import Popular from '../../pages/Popular'
 import TopRated from '../../pages/TopRated'
 import Upcoming from '../../pages/Upcoming'
 import Search from '../../pages/Search'
+import Store from '../../Store'
 
 class App extends Component {
 
@@ -19,19 +21,21 @@ class App extends Component {
 
   render() {
     return (
-        <div className='App'>
+       <Provider store={ Store }>
+          <div className='App'>
             <Navbar {...this.props}/>
             <section className='main'>
                <Switch>
                   <Route exact path='/' component={ Home }/>
-                  <Route  path='/populares' component={ Popular }/>
-                  <Route  path='/mais-votados' component={ TopRated }/>
-                  <Route  path='/lancamentos' component={ Upcoming }/>
-                  <Route  path='/em-cartaz' component={ NowPlaying }/>
-                  <Route  path='/pesquisar/:query' component={ Search }/>
+                  <Route  path='/filmes/populares' component={ Popular }/>
+                  <Route  path='/filmes/mais-votados' component={ TopRated }/>
+                  <Route  path='/filmes/lancamentos' component={ Upcoming }/>
+                  <Route  path='/filmes/em-cartaz' component={ NowPlaying }/>
+                  <Route  path='/filmes/pesquisar/:query' component={ Search }/>
                </Switch>
             </section>
-        </div>
+          </div>
+       </Provider>
     );
   }
 }
