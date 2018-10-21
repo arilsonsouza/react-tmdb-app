@@ -1,0 +1,28 @@
+.pagination{
+    display: flex;
+    margin: 1em;
+}
+
+.pagination-item{
+    cursor: pointer;
+    padding: .5em;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 0 .5px;
+    color:  #081c24;
+    /* border: 1px solid #081c24; */
+}
+
+.pagination-item-disabled{
+    padding: .5em;
+    font-size: 1.1em;
+    font-weight: 400;
+    color:  #081c24;
+    opacity: .5;
+}
+
+.current-page-item{
+    color: #FFF;
+    cursor: default;
+    background-color: #081c24;
+}

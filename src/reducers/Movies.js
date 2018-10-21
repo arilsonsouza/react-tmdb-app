@@ -2,15 +2,13 @@
 export default function movies(state = [], action){
     switch (action.type) {
         case 'FETCH_MOVIES_REQUEST':
-            let category = Object.assign({}, {[ action.category ]: { isFetching: true} })
-            return Object.assign({}, state, {
-                ...category
-            })
+            return Object.assign({}, state)
         break
         case 'FETCH_MOVIES_SUCCES':
             const {page, results, total_pages, total_results} = action.movies
-            category = Object.assign({}, { [action.category]: {isFetching: false, page, results, total_pages, total_results} })
-             return Object.assign({}, state, {
+            const category = Object.assign({}, { [action.category]: {isFetching: false, page, results, total_pages, total_results} })
+            
+            return Object.assign({}, state, {
                ...category 
             })
         break

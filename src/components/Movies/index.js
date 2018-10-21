@@ -1,59 +1,58 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import * as movieActions from '../../actions/Movies'
 import Movie from '../Movie'
+import Pagination from '../Pagination'
+
 import './movies.css'
 
-class  Movies extends Component {
+class Movies extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
 
         this.state = {
-            currentPage: 2
+           rowsPerPage: 20,
+           paginationRange: 10
         }
     }
 
-    numberFormat(number){
+    numberFormat(number) {
         return new Intl.NumberFormat('pt-BR').format(number)
     }
 
-    loadMore = () => {
-        const currentPage = this.state.currentPage
-
-        console.log(currentPage);
-        this.setState({
-            currentPage: currentPage+1
-        })
-    }
-
     movies = () => {
-        console.log(this.props.showAll)
         return this.props.showAll ? this.props.movies[this.props.category].results : this.props.movies[this.props.category].results.slice(0, 10)
     }
 
-    render(){   
-        
-        return(
+    render() {
+
+        return (
             <div className='movies'>
                 <header className='movies-header'>
-                    <h2 className='movies-title'> { this.props.title } </h2>
-                     { !this.props.showAll ? <Link to={ this.props.url } className='movies-link'>Ver todos</Link> 
-                      : this.props.movies[this.props.category] && <span className='movies-results'>{ this.numberFormat(this.props.movies[this.props.category].total_results) } resultados</span> }
+                    <h2 className='movies-title'> {this.props.title} </h2>
+                    {!this.props.showAll ? <Link to={this.props.url} className='movies-link'>Ver todos</Link>
+                        : this.props.movies[this.props.category] && <span className='movies-results'>{this.numberFormat(this.props.movies[this.props.category].total_results)} resultados</span>}
                 </header>
                 {this.props.movies[this.props.category] && <ul className='movies-list'>
-                   {  
-                    this.movies().map(movie => 
-                        <li className='movie-item' key={ movie.id }>
-                            <Movie movie={ movie } url={ this.props.url }/>
-                        </li>
+                    {
+                        this.movies().map(movie =>
+                            movie.poster_path && <li className='movie-item' key={movie.id}>
+                                <Movie movie={movie} url={this.props.url} />
+                            </li>
                         )
-                   }
+                    }
                 </ul>}
 
                 {this.props.showAll && <div className='movies-load-more'>
-                    <button onClick={ () => this.loadMore() } className='movies-load-more-btn'>Carregar Mais</button>
+                    {this.props.movies[this.props.category] && <Pagination currentPage={ this.props.movies[this.props.category].page }
+                        collectionLength={ this.props.movies[this.props.category].total_results }
+                        rowsPerPage={ this.state.rowsPerPage }
+                        paginationRange={ this.state.paginationRange }
+                        category={ this.props.category } />}
                 </div>}
             </div>
         )
@@ -64,4 +63,6 @@ const mapStateToProps = state => ({
     movies: state.movies
 })
 
-export default  connect(mapStateToProps)(Movies)
+const mapDispatchToProps = dispatch => bindActionCreators(movieActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movies)

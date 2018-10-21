@@ -5,7 +5,7 @@ import './movie.css'
 
 const Movie = props => {
         return(
-           <Link to={`${props.url}/${props.movie.id}`} className='movie-item-link'>
+            <Link to={`${props.url}/${props.movie.id}`} className='movie-item-link'>
                 <figure className='movie-item-poster'>
                     <img className='movie-item-img' src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${props.movie.poster_path}`}/>
                 </figure>
