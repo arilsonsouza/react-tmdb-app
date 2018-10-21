@@ -1,17 +1,32 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import MoviesPage from '../../components/MoviesPage'
+import * as movieActions from '../../actions/Movies'
+const url = '/filmes/lancamentos'
 
-const url =  '/filmes/lancamentos' 
+class Upcoming extends Component {
+   
+    componentDidMount() {
+        if (!this.props.movies['upcoming']) {
+            this.props.fetchMovies('upcoming')
+        }
+    }
 
-class Upcoming extends Component{
-    render(){
-        return(
-           <div>
-              <MoviesPage title='Próximos Lançamentos' category='upcoming' url={ url }  showAll={ true }/>
-           </div>
+    render() {
+        return (
+            <div>
+                <MoviesPage title='Próximos Lançamentos' category='upcoming' url={url} showAll={true} />
+            </div>
         )
     }
 }
 
-export default Upcoming
+const mapStateToProps = state => ({
+    movies: state.movies
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(movieActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Upcoming)

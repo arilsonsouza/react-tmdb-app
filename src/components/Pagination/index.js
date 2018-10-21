@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import * as movieActions from '../../actions/Movies'
+import * as queryActions from '../../actions/Query'
+
 import './pagination.css'
 
 class Pagination extends Component {
@@ -80,7 +82,11 @@ class Pagination extends Component {
     }
 
     loadMore = (page) => {
-        this.props.fetchMovies(this.props.category, page)
+        if(this.props.query){
+            this.props.searchMovies('search', this.props.query, page)
+        }else{
+            this.props.fetchMovies(this.props.category, page)
+        }
     }
 
     renderPaginationItem(page, index) {
@@ -96,7 +102,7 @@ class Pagination extends Component {
                 <ul className='pagination'>
                     <li className={ this.props.currentPage !== 1  ? 'pagination-item' : 'pagination-item-disabled'}
                        onClick={ () =>  this.props.currentPage !== 1 ? this.loadMore(this.props.currentPage - 1) : null }>
-                        <i class="fas fa-angle-left"></i>
+                        <i className="fas fa-angle-left"></i>
                     </li>
                     
                     {this.state.pages.map((page, index) =>
@@ -104,7 +110,7 @@ class Pagination extends Component {
                     )}
                     <li className={ this.props.currentPage !== this.state.pages[this.state.pages.length - 1] ? 'pagination-item' : 'pagination-item-disabled'}
                         onClick={ () =>  this.props.currentPage !== this.state.pages[this.state.pages.length - 1] ? this.loadMore(this.props.currentPage + 1) : null  }>
-                        <i class="fas fa-angle-right"></i>
+                        <i className="fas fa-angle-right"></i>
                     </li>
                 </ul>
             </div>
@@ -113,9 +119,10 @@ class Pagination extends Component {
 }
 
 const mapStateToProps = state => ({
-    movies: state.movies
+    movies: state.movies,
+    query: state.query
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators(movieActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(Object.assign({},queryActions, movieActions), dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination)

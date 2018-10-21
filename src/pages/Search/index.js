@@ -1,38 +1,42 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-class Search extends Component{
+import * as movieActions from '../../actions/Movies'
+import * as queryActions from '../../actions/Query'
 
-    constructor(props){
-        super(props)
+import MoviesPage from '../../components/MoviesPage'
 
-        this.state = {
-            query: null
+const url = '/filmes/search'
+
+class Search extends Component {
+  
+    componentDidMount() {
+        const { query } = this.props.match.params
+        this.props.setQuery(query)
+        if (!this.props.movies['search']) {
+            this.props.searchMovies('search', query)
         }
     }
 
-    setQuery = (searchTerm) => {
-        this.setState({
-            query: searchTerm.replace(/\-/g, ' ')
-        })
+    componentWillUnmount() {
+        this.props.setQuery(null)
     }
 
-    componentDidMount(){
-        const { query }= this.props.match.params
-        this.setQuery(query);
-    }
-    
-    componentWillReceiveProps(nextProps){
-        const { query } = nextProps.match.params
-        this.setQuery(query);
-    }
-
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <h1>Pesquisar: { this.state.query }</h1>
+                <MoviesPage title={`Pesquisa: ${this.props.query}`} category='search' url={url} showAll={true} />
             </div>
         )
     }
 }
 
-export default Search
+const mapStateToProps = state => ({
+    movies: state.movies,
+    query: state.query
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(Object.assign({}, movieActions, queryActions), dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

@@ -40,7 +40,7 @@ class Movies extends Component {
                 {this.props.movies[this.props.category] && <ul className='movies-list'>
                     {
                         this.movies().map(movie =>
-                            movie.poster_path && <li className='movie-item' key={movie.id}>
+                             <li className='movie-item' key={movie.id}>
                                 <Movie movie={movie} url={this.props.url} />
                             </li>
                         )

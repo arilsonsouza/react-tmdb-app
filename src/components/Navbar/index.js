@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import './navbar.css'
+import * as movieActions from '../../actions/Movies'
+import * as queryActions from '../../actions/Query'
 
 class Navbar extends Component {
     constructor(props){
@@ -14,7 +18,10 @@ class Navbar extends Component {
 
     handleSubmit = (event) => {
         if(event.key === 'Enter'){
-            this.props.history.push(`/filmes/pesquisar/${this.state.query.trim().replace(/ /g, '-')}`)
+            const query = this.state.query.trim()
+            this.props.setQuery(query)
+            this.props.searchMovies('search', query)
+            this.props.history.push(`/filmes/pesquisar/${query.replace(/ /g, '-')}`)
         }
     }
 
@@ -124,4 +131,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar
+const mapStateToProps = state => ({
+    movies: state.movies,
+    query: state.query
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(Object.assign({}, movieActions, queryActions), dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
