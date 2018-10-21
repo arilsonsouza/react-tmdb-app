@@ -4,20 +4,14 @@ import { connect } from 'react-redux'
 import Movies from '../Movies'
 import './moviespage.css'
 
-class MoviesPage extends Component{
-    constructor(props){
-        super(props)
-    }
-
-    render(){
+const MoviesPage = props => {
         return(
            <div >
                 <div className='wrapper'>
-                     <Movies title={ this.props.title } category={ this.props.category }  showAll={ true } />
+                     <Movies title={ this.props.title } category={ this.props.category } url={ this.props.url }  showAll={ true } />
                 </div>
            </div>
         )
-    }
 }
 
 const mapStateToProps = state => ({
