@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const TMDB_API_URL = 'https://api.themoviedb.org/3'
-const TMDB_API_KEY = 'dbaef0501d0ac3d26e8279360f21551a'
+const TMDB_API_URL = process.env.REACT_APP_TMDB_API_URL
+const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY
 
 export function fetchMovies(category, page = 1, language = 'pt-BR') {
 

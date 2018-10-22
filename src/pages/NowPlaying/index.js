@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import MoviesPage from '../../components/MoviesPage'
 import * as movieActions from '../../actions/Movies'
-const url = '/filmes/em-cartaz'
 
 class NowPlaying extends Component {
 
@@ -17,7 +16,7 @@ class NowPlaying extends Component {
         render() {
                 return (
                         <div>
-                                <MoviesPage title='Em Cartaz' category='now_playing' url={url} showAll={true} />
+                                <MoviesPage title='Em Cartaz' category='now_playing'  showAll={true} />
                         </div>
                 )
         }

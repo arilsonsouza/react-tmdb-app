@@ -1,7 +1,6 @@
 .main{
-  width: calc(100% - 95px);
+  width: calc(100% - 85px);
   padding: 75px 0 0;
-  margin-left: 93px;
+  margin-left: 85px;
   position: relative;
 }
-

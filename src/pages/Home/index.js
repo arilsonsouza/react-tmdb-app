@@ -29,7 +29,7 @@ class Home extends Component {
                 <header className='home-header' style={{ backgroundImage: `url(${bg})` }}>
                     <div className='home-header-wrap-bg'>
                         <div className='home-header-wrap'>
-                            <h1 className='home-header-title'>Reac TMDB App</h1>
+                            <h1 className='home-header-title'>React TMDB App</h1>
                             <strong className='home-header-subtitle'>Feito com React</strong>
                             <a className='home-header-link' href='https://github.com/arilsonsouza/react-tmdb-app'>
                                 <svg id="iconGithub" className='home-header-link-icon' viewBox="0 0 15 15" width="100%" height="100%">

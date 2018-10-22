@@ -1,0 +1,97 @@
+.movie-detail-page{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.movie-detail-header{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(15%, rgba(0, 0, 0, 0.85)), color-stop(40%, rgba(0, 0, 0, 0.2)), color-stop(90%, #000) );
+    background-image: linear-gradient( rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.2) 40%, #000 90% );
+    background-attachment: fixed; 
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    /* background-image: radial-gradient(circle at 20% 50%, rgba(12.94%, 16.86%, 17.65%, 0.98) 0%, rgba(18.43%, 21.96%, 23.92%, 0.88) 100%); */
+}
+
+.movie-detail-header-container{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+}
+.movie-detail-header-content{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.movie-detail-poster-path{
+    display: flex;
+    flex: 1;
+}
+
+.movie-detail-poster-path-img{
+   
+}
+
+.color-style{
+    color: rgba(97, 218, 251, 1);
+}
+
+.movie-detail-data-container{
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.movie-detail-data-container h1{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #FFF;
+    text-align: left;
+}
+
+.movie-detail-tagline{
+    padding-bottom: 0.25em;
+    display: block;
+    font-size: 1.2em;
+    margin: .8em 0px 0px;
+    text-align: left;
+}
+
+.movie-detail-overview{
+    text-align: justify;
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 0;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+}
+
+.movie-detail-overview::first-line { 
+    text-indent: 30px; 
+}
+
+.movie-detail-genre-list,
+.movie-detail-production-companies{
+    display: block;
+    text-align: left;
+}
+
+.movie-detail-genre-list{
+    font-size: 1.2em;
+}
+
+.movie-detail-production-companies{
+ color: rgba(255, 255, 255, .9);
+ padding-bottom: 10px;
+ padding-top: 10px;
+}
+
+

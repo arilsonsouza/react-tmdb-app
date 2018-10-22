@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import MoviesPage from '../../components/MoviesPage'
 import * as movieActions from '../../actions/Movies'
-const url = '/filmes/lancamentos'
 
 class Upcoming extends Component {
    
@@ -17,7 +16,7 @@ class Upcoming extends Component {
     render() {
         return (
             <div>
-                <MoviesPage title='Próximos Lançamentos' category='upcoming' url={url} showAll={true} />
+                <MoviesPage title='Próximos Lançamentos' category='upcoming' showAll={true} />
             </div>
         )
     }

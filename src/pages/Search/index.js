@@ -7,8 +7,6 @@ import * as queryActions from '../../actions/Query'
 
 import MoviesPage from '../../components/MoviesPage'
 
-const url = '/filmes/search'
-
 class Search extends Component {
   
     componentDidMount() {
@@ -26,7 +24,7 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <MoviesPage title={`Pesquisa: ${this.props.query}`} category='search' url={url} showAll={true} />
+                <MoviesPage title={`Pesquisa: ${this.props.query}`} category='search' showAll={true} />
             </div>
         )
     }
