@@ -4,6 +4,7 @@ import axios from 'axios'
 import './movie_detail.css'
 import Rowdata from '../../components/RowData'
 import Slide from '../../components/Slide'
+import Loading from '../../components/Loading'
 
 const TMDB_API_URL = process.env.REACT_APP_TMDB_API_URL
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY
@@ -16,7 +17,8 @@ class MovieDetail extends Component {
         this.state = {
             movie: null,
             cast: null,
-            crew: null
+            crew: null,
+            loading: true
         }
 
     }
@@ -28,14 +30,12 @@ class MovieDetail extends Component {
     movieCredits = (movieId) => {
         axios.get(`${TMDB_API_URL}/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`)
             .then(({ data }) => {
-                console.log(data)
                 const cast = this.filterByprofilePath(data.cast)
                 const crew = this.filterByprofilePath(data.crew)
-                console.log('cast: ',cast)
-                console.log('crew: ', crew)
                 this.setState({
                     cast,
-                    crew
+                    crew,
+                    loading:false
                 })
             }).catch(error => {
 
@@ -67,10 +67,11 @@ class MovieDetail extends Component {
     }
 
     render() {
-        const { movie, cast, crew } = this.state
+        const { movie, cast, crew, loading } = this.state
         return (
             <div>
-                {this.state.movie && <div className='movie-detail-page' >
+                { loading && <Loading/> }
+                {this.state.movie && !loading && <div className='movie-detail-page' >
                     <header className='movie-detail-header' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1400_and_h450_face${movie.backdrop_path})` }}>
                         <div className='movie-detail-header-container'>
                             <div className='movie-detail-header-content'>
@@ -100,7 +101,7 @@ class MovieDetail extends Component {
                         </div>
                     </header>
                             {cast && <Slide properties={ cast } title='Elenco'/> }
-                            {crew && <Slide properties={ crew } title='Direção'/> }
+                            {crew && <Slide properties={ crew } title='Produção'/> }
                 </div>}
             </div>
         )
