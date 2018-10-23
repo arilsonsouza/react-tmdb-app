@@ -16,7 +16,7 @@ class NowPlaying extends Component {
         render() {
                 return (
                         <div>
-                                <MoviesPage title='Em Cartaz' category='now_playing'  showAll={true} />
+                                <MoviesPage title='Em Cartaz' category='now_playing' showAll={true} />
                         </div>
                 )
         }

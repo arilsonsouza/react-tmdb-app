@@ -34,7 +34,7 @@
 }
 
 .movie-detail-poster-path-img{
-   
+   max-height: 450px;
 }
 
 .color-style{

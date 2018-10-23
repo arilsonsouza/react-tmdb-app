@@ -6,7 +6,7 @@ import MoviesPage from '../../components/MoviesPage'
 import * as movieActions from '../../actions/Movies'
 
 class TopRated extends Component {
-  
+
     componentDidMount() {
         if (!this.props.movies['top_rated']) {
             this.props.fetchMovies('top_rated')

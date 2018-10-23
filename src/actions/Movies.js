@@ -59,3 +59,12 @@ export function searchMovies(category, query, page = 1, language = 'pt-Br') {
 
     }
 }
+
+export function removeCategoryFromMovies(category){
+    return dispatch => {
+        return dispatch({
+            type: 'REMOVE_CATEGORY_FROM_MOVIES',
+            category
+        })
+    }
+}

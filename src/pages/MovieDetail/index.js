@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import './movie_detail.css'
+import noImage from '../../components/Movie/no-image.png'
 import Rowdata from '../../components/RowData'
 import Slide from '../../components/Slide'
 import Loading from '../../components/Loading'
@@ -76,7 +77,7 @@ class MovieDetail extends Component {
                         <div className='movie-detail-header-container'>
                             <div className='movie-detail-header-content'>
                                 <div className='movie-detail-poster-path'>
-                                    <img className='movie-detail-poster-path-img' alt={movie.title} src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
+                                    <img className='movie-detail-poster-path-img' alt={movie.title} src={ movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : noImage} />
                                 </div>
                                 <div className='movie-detail-data-container'>
                                     <h1>{movie.title}</h1>

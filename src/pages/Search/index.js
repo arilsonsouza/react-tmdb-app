@@ -6,6 +6,7 @@ import * as movieActions from '../../actions/Movies'
 import * as queryActions from '../../actions/Query'
 
 import MoviesPage from '../../components/MoviesPage'
+import Loading from '../../components/Loading'
 
 class Search extends Component {
   
@@ -18,13 +19,17 @@ class Search extends Component {
     }
 
     componentWillUnmount() {
+        this.props.removeCategoryFromMovies('search')
         this.props.setQuery(null)
     }
 
     render() {
+
         return (
             <div>
-                <MoviesPage title={`Pesquisa: ${this.props.query}`} category='search' showAll={true} />
+                { this.props.movies.isFetching && <Loading/>}
+                { !this.props.movies.isFetching && <MoviesPage title={`Pesquisa: ${this.props.query}`} 
+                                                                category='search' showAll={true} /> }
             </div>
         )
     }

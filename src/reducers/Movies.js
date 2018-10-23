@@ -17,6 +17,11 @@ export default function movies(state = [], action) {
                 [action.category]: action.error
             })
 
+        case 'REMOVE_CATEGORY_FROM_MOVIES':
+            const newState = delete state[action.category]
+            console.log(newState)
+            return state
+
         default:
             return state
     }

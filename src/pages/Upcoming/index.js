@@ -12,7 +12,6 @@ class Upcoming extends Component {
             this.props.fetchMovies('upcoming')
         }
     }
-
     render() {
         return (
             <div>

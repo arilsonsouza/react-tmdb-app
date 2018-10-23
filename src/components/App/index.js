@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import './App.css';
@@ -11,6 +11,7 @@ import TopRated from '../../pages/TopRated'
 import Upcoming from '../../pages/Upcoming'
 import Search from '../../pages/Search'
 import MovieDetail from '../../pages/MovieDetail'
+import NotFound from '../../pages/NotFound'
 import Store from '../../Store'
 
 class App extends Component {
@@ -29,14 +30,15 @@ class App extends Component {
 
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/filmes/populares' component={Popular} />
-              <Route path='/filmes/mais-votados' component={TopRated} />
-              <Route path='/filmes/lancamentos' component={Upcoming} />
-              <Route path='/filmes/em-cartaz' component={NowPlaying} />
-              <Route path='/filme/:movieId/detalhes' component={MovieDetail} />
-              <Route path='/filmes/pesquisar/:query' component={Search} />
+              <Route exact path='/filmes/populares' component={Popular} />
+              <Route exact path='/filmes/mais-votados' component={TopRated} />
+              <Route exact path='/filmes/lancamentos' component={Upcoming} />
+              <Route exact path='/filmes/em-cartaz' component={NowPlaying} />
+              <Route exact path='/filme/:movieId/detalhes' component={MovieDetail} />
+              <Route exact path='/filmes/pesquisar/:query' component={Search} />
+              <Route exact path='/404' component={ NotFound }/>
+              <Route path='*' render={ () => <Redirect to='/404'/> }/>
             </Switch>
-
 
           </section>
         </div>
