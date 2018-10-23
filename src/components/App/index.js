@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import './App.css';
 import Navbar from '../Navbar'

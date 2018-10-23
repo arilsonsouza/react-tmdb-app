@@ -1,0 +1,31 @@
+.card{
+    flex: 1;
+    opacity: 0.5;
+    transition: opacity 300ms linear, transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.995);;
+    transform: scale(0.7); 
+    border: 1px solid #e3e3e3;
+    text-align: center;
+}
+
+.name{
+    font-size: 1.2em;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 10px 10px 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.character{
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, .8);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2em;
+}
+
+.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
